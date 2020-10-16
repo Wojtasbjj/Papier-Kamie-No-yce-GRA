@@ -1,9 +1,12 @@
 // Zobacz gotowy projekt: https://websamuraj.pl/examples/js/projekt7/
 
 let playerHand = "";
+let computerHand = 0;
 const papier = document.getElementById('1')
 const kamien = document.getElementById('2')
 const nozyczki = document.getElementById('3')
+const computerHands = [papier, kamien, nozyczki];
+const letsPlay = document.querySelector('button');
 
 const selectImage = (e) => {
     // console.log(e.target);
@@ -33,6 +36,20 @@ const selectImage = (e) => {
 
 }
 
+const play = (e) => {
+    if (playerHand == "") {
+        alert('wybierz rękę!');
+        return;
+    }
+    const computerHand = Math.floor(Math.random () * computerHands.length); //0 = papier, 1 = kamien, 2 = nozyczki
+    console.log(`reka komputera: ${computerHand}`);
+    console.log('zaczynamy gre');
+    
+}
+
+//czas na ify kto kiedy wygrywa a pozniej podliczenie wynikow, liczby gier i innych statystyk.
+
+letsPlay.addEventListener('click', play)
 document.querySelectorAll('img').forEach(image => {
     image.addEventListener('click', selectImage)
 })
