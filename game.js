@@ -114,7 +114,7 @@ const play = (e) => {
         if(computerHand == 2) {
             computerChoice.textContent = 'Wybór komputera: nożyczki';
             winer.textContent = 'Zwycięzca gry: REMIS !';
-            winer.textContent++;
+            wins.textContent++;
             console.log('remis')
         }
     }
