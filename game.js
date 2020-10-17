@@ -10,6 +10,15 @@ const letsPlay = document.querySelector('button');
 const playerChoice = document.querySelector('.yourChoice');
 const computerChoice = document.querySelector('.computerChoice');
 const winer = document.querySelector('.winer');
+let numbers = document.querySelector('.numbersSpan');
+let wins = document.querySelector('.winsSpan');
+let losses = document.querySelector('.lossesSpan');
+let draws = document.querySelector('.drawsSpan');
+numberIndex = 0;
+winsIndex = 0;
+lossesIndex = 0;
+drawsIndex = 0;
+
 
 const selectImage = (e) => {
     // console.log(e.target);
@@ -40,10 +49,7 @@ const selectImage = (e) => {
 }
 
 const play = (e) => {
-    // playerChoice.textContent == 'Twój wybór: '
-    // computerChoice.textContent == 'Wybór komputera: ' // musze wykminic jak czyscic po kazdej grze
-    // winer.textContent == 'Zwycięzca gry: '
-
+    numbers.textContent++;
     if (playerHand == "") {
         alert('wybierz rękę!');
         return;
@@ -56,16 +62,19 @@ const play = (e) => {
         if(computerHand == 0){
             computerChoice.textContent = 'Wybór komputera: papier';
             winer.textContent = 'Zwycięzca gry: REMIS !'
+            draws.textContent++;
             console.log('remis');
         }
         if(computerHand == 1) {
             computerChoice.textContent = 'Wybór komputera: kamień';
             winer.textContent = 'Zwycięzca gry: WYGRAŁEŚ !';
+            wins.textContent++
             console.log('user wins')
         }
         if(computerHand == 2) {
             computerChoice.textContent = 'Wybór komputera: nozyczki';
             winer.textContent = 'Zwycięzca gry: KOMPUTER WYGRAŁ :(';
+            losses.textContent++;
             console.log('computer wins')
         }
     }
@@ -74,17 +83,20 @@ const play = (e) => {
         if(computerHand == 0){
             computerChoice.textContent = 'Wybór komputera: papier';
             winer.textContent = 'Zwycięzca gry: KOMPUTER WYGRAŁ :(';
+            losses.textContent++
             console.log('computer wins');
         }
         if(computerHand == 1) {
             computerChoice.textContent = 'Wybór komputera: kamień';
-            winer.textContent = 'Zwycięzca gry: REMIS !'
-            console.log('remis')
+            winer.textContent = 'Zwycięzca gry: REMIS !';
+            draws.textContent++;
+            console.log('remis');
         }
         if(computerHand == 2) {
             computerChoice.textContent = 'Wybór komputera: nożyczki';
             winer.textContent = 'Zwycięzca gry: WYGRAŁEŚ !';
-            console.log('user wins')
+            wins.textContent++;
+            console.log('user wins');
         }
     }
     if(playerHand == nozyczki) {
@@ -92,23 +104,25 @@ const play = (e) => {
         if(computerHand == 0){
             computerChoice.textContent = 'Wybór komputera: papier';
             winer.textContent = 'Zwycięzca gry: WYGRAŁEŚ !';
+            wins.textContent++;
             console.log('user wins');
         }
         if(computerHand == 1) {
             computerChoice.textContent = 'Wybór komputera: kamień';
             winer.textContent = 'Zwycięzca gry: KOMPUTER WYGRAŁ :(';
-            console.log('computer wins')
+            losses.textContent++;
+            console.log('computer wins');
         }
         if(computerHand == 2) {
             computerChoice.textContent = 'Wybór komputera: nożyczki';
-            winer.textContent = 'Zwycięzca gry: REMIS !'
+            winer.textContent = 'Zwycięzca gry: REMIS !';
+            winer.textContent++;
             console.log('remis')
         }
     }
-    
+
 }
-//
-//czas na ify kto kiedy wygrywa a pozniej podliczenie wynikow, liczby gier i innych statystyk.
+
 
 letsPlay.addEventListener('click', play)
 document.querySelectorAll('img').forEach(image => {
