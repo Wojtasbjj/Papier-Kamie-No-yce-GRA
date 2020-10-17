@@ -7,6 +7,9 @@ const kamien = document.getElementById('2')
 const nozyczki = document.getElementById('3')
 const computerHands = [papier, kamien, nozyczki];
 const letsPlay = document.querySelector('button');
+const playerChoice = document.querySelector('.yourChoice');
+const computerChoice = document.querySelector('.computerChoice');
+const winer = document.querySelector('.winer');
 
 const selectImage = (e) => {
     // console.log(e.target);
@@ -37,6 +40,10 @@ const selectImage = (e) => {
 }
 
 const play = (e) => {
+    // playerChoice.textContent == 'Twój wybór: '
+    // computerChoice.textContent == 'Wybór komputera: ' // musze wykminic jak czyscic po kazdej grze
+    // winer.textContent == 'Zwycięzca gry: '
+
     if (playerHand == "") {
         alert('wybierz rękę!');
         return;
@@ -44,6 +51,60 @@ const play = (e) => {
     const computerHand = Math.floor(Math.random () * computerHands.length); //0 = papier, 1 = kamien, 2 = nozyczki
     console.log(`reka komputera: ${computerHand}`);
     console.log('zaczynamy gre');
+    if (playerHand == papier){
+        playerChoice.textContent = 'Twój wybór: papier';
+        if(computerHand == 0){
+            computerChoice.textContent = 'Wybór komputera: papier';
+            winer.textContent = 'Zwycięzca gry: REMIS !'
+            console.log('remis');
+        }
+        if(computerHand == 1) {
+            computerChoice.textContent = 'Wybór komputera: kamień';
+            winer.textContent = 'Zwycięzca gry: WYGRAŁEŚ !';
+            console.log('user wins')
+        }
+        if(computerHand == 2) {
+            computerChoice.textContent = 'Wybór komputera: nozyczki';
+            winer.textContent = 'Zwycięzca gry: KOMPUTER WYGRAŁ :(';
+            console.log('computer wins')
+        }
+    }
+    if (playerHand == kamien) {
+        playerChoice.textContent = 'Twój wybór: kamień';
+        if(computerHand == 0){
+            computerChoice.textContent = 'Wybór komputera: papier';
+            winer.textContent = 'Zwycięzca gry: KOMPUTER WYGRAŁ :(';
+            console.log('computer wins');
+        }
+        if(computerHand == 1) {
+            computerChoice.textContent = 'Wybór komputera: kamień';
+            winer.textContent = 'Zwycięzca gry: REMIS !'
+            console.log('remis')
+        }
+        if(computerHand == 2) {
+            computerChoice.textContent = 'Wybór komputera: nożyczki';
+            winer.textContent = 'Zwycięzca gry: WYGRAŁEŚ !';
+            console.log('user wins')
+        }
+    }
+    if(playerHand == nozyczki) {
+        playerChoice.textContent = 'Wybór komputera: nożyczki';
+        if(computerHand == 0){
+            computerChoice.textContent = 'Wybór komputera: papier';
+            winer.textContent = 'Zwycięzca gry: WYGRAŁEŚ !';
+            console.log('user wins');
+        }
+        if(computerHand == 1) {
+            computerChoice.textContent = 'Wybór komputera: kamień';
+            winer.textContent = 'Zwycięzca gry: KOMPUTER WYGRAŁ :(';
+            console.log('computer wins')
+        }
+        if(computerHand == 2) {
+            computerChoice.textContent = 'Wybór komputera: nożyczki';
+            winer.textContent = 'Zwycięzca gry: REMIS !'
+            console.log('remis')
+        }
+    }
     
 }
 
@@ -53,6 +114,3 @@ letsPlay.addEventListener('click', play)
 document.querySelectorAll('img').forEach(image => {
     image.addEventListener('click', selectImage)
 })
-
-
-
