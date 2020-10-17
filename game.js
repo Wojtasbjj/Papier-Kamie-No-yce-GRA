@@ -120,7 +120,10 @@ const play = (e) => {
             console.log('remis')
         }
     }
-
+    playerHand = "";
+    papier.classList.remove('choice');
+    kamien.classList.remove('choice');
+    nozyczki.classList.remove('choice');
 }
 
 
