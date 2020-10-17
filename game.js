@@ -1,5 +1,3 @@
-// Zobacz gotowy projekt: https://websamuraj.pl/examples/js/projekt7/
-
 let playerHand = "";
 let computerHand = 0;
 const papier = document.getElementById('1')
