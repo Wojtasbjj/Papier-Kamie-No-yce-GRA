@@ -107,7 +107,7 @@ const play = (e) => {
     }
     
 }
-
+//
 //czas na ify kto kiedy wygrywa a pozniej podliczenie wynikow, liczby gier i innych statystyk.
 
 letsPlay.addEventListener('click', play)
