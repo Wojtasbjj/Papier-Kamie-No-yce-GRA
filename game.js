@@ -18,9 +18,8 @@ winsIndex = 0;
 lossesIndex = 0;
 drawsIndex = 0;
 let flaga = true;
+let indexImage = 0;
 
-
-indexImage = 0;
     const imageChange = () => {
         // console.log(images[indexImage]);
         computerChoice.textContent = `Wybór komputera: ${images[indexImage]}`
@@ -57,7 +56,6 @@ const selectImage = (e) => {
         playerHand = nozyczki;
         console.log('gracz wybrał nozyczki')
     }
-
 }
 
 const play = (e) => {
@@ -67,7 +65,7 @@ const play = (e) => {
         alert('wybierz rękę!');
         return;
     }
-    const computerHand = Math.floor(Math.random () * computerHands.length); //0 = papier, 1 = kamien, 2 = nozyczki
+    let computerHand = Math.floor(Math.random () * computerHands.length); //0 = papier, 1 = kamien, 2 = nozyczki
     console.log(`reka komputera: ${computerHand}`);
     console.log('zaczynamy gre');
     if (playerHand == papier){
@@ -132,13 +130,19 @@ const play = (e) => {
             wins.textContent++;
             console.log('remis')
         }
+
+
     }
+
+    setTimeout(() => {
+        setInterval(imageChange, 200) 
+    }, 3000);
+
     playerHand = "";
     papier.classList.remove('choice');
     kamien.classList.remove('choice');
     nozyczki.classList.remove('choice');
 }
-
 
 letsPlay.addEventListener('click', play)
 document.querySelectorAll('img').forEach(image => {
