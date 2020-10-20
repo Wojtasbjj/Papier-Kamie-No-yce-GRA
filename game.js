@@ -12,11 +12,25 @@ let numbers = document.querySelector('.numbersSpan');
 let wins = document.querySelector('.winsSpan');
 let losses = document.querySelector('.lossesSpan');
 let draws = document.querySelector('.drawsSpan');
+const images = ['papier', 'kamień', 'nożyce'];
 numberIndex = 0;
 winsIndex = 0;
 lossesIndex = 0;
 drawsIndex = 0;
+let flaga = true;
 
+
+indexImage = 0;
+    const imageChange = () => {
+        // console.log(images[indexImage]);
+        computerChoice.textContent = `Wybór komputera: ${images[indexImage]}`
+        indexImage++;
+        if (indexImage == images.length) {
+            indexImage = 0;
+        }
+    }
+
+    const setInt = setInterval(imageChange, 200);
 
 const selectImage = (e) => {
     // console.log(e.target);
@@ -47,6 +61,7 @@ const selectImage = (e) => {
 }
 
 const play = (e) => {
+    clearInterval(setInt);
     numbers.textContent++;
     if (playerHand == "") {
         alert('wybierz rękę!');
